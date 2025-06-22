@@ -4,8 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAGE ONE</title>
+    <link rel="stylesheet" href="./pageOne.css">
 </head>
 <body>
-    <h1>Page 1 - by sandeep</h1>
+    <nav class="breadcrumb">
+        <span>Home</span> / <span>Products</span>
+    </nav>
+    <div class="filters">
+        <button class="filter active">All</button>
+        <button class="filter">Headphones</button>
+        <button class="filter">Earphones</button>
+        <button class="filter">Accessories</button>
+        <button class="filter">Gaming</button>
+        <button class="filter">Wireless</button>
+    </div>
+    <div class="products" id="products-list">
+        <!-- Product cards will be injected here by JS -->
+    </div>
+    <template id="product-card-template">
+        <div class="product-card" data-product="">
+            <div class="product-rating"><span class="star"> <!-- Star SVG --> <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1.5L11.09 6.26L16.18 6.91L12.55 10.59L13.63 15.68L9 13.02L4.37 15.68L5.45 10.59L1.82 6.91L6.91 6.26L9 1.5Z" fill="#FFD600" stroke="#FFD600" stroke-width="1.2"/></svg> </span> 4.9/5.0</div>
+            <img src="" alt="Headphones" class="product-img main-img">
+            <div class="product-info">
+                <span class="brand">SonicPulse</span>
+                <h2>Flow Harmony</h2>
+                <span class="price">Rs. 83,000.00</span>
+                <div class="color-row">Color: <span class="color-name">Gold Tone</span></div>
+                <div class="color-options">
+                    <!-- Color buttons will be injected by JS -->
+                </div>
+                <button class="add-to-cart">Add to cart</button>
+            </div>
+        </div>
+    </template>
+    <div class="show-more-container">
+        <button class="show-more-btn">Show more products</button>
+    </div>
+    <section class="features-section">
+        <div class="feature">
+            <img src="./static/online-support.svg" alt="Customer service" class="feature-icon">
+            <h3>Customer service</h3>
+            <p>It's not actually free we just price<br>it into the products.</p>
+        </div>
+        <div class="feature">
+            <img src="./static/delivery_709790 1.svg" alt="Fast Free Shipping" class="feature-icon">
+            <h3>Fast Free Shipping</h3>
+            <p>Get free shipping on orders of<br>$150 or more.</p>
+        </div>
+        <div class="feature">
+            <img src="./static/friend.svg" alt="Refer a friend" class="feature-icon">
+            <h3>Refer a friend</h3>
+            <p>Refer a friend and get 15% off<br>each other.</p>
+        </div>
+        <div class="feature">
+            <img src="./static/shield.svg" alt="Secure payment" class="feature-icon">
+            <h3>Secure payment</h3>
+            <p>Your payment information is<br>processed securely.</p>
+        </div>
+    </section>
+    <div class="footer-spacer"></div>
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-newsletter">
+                <h2>Stay in the loop with our<br>weekly newsletter</h2>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Clarifone@gmail.com" required>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h3>Collections</h3>
+                    <ul>
+                        <li>Headphones</li>
+                        <li>Earphones</li>
+                        <li>Speakers</li>
+                        <li>Accessories</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul>
+                        <li>Our story</li>
+                        <li>Our journal</li>
+                        <li>FAQS</li>
+                        <li>Contact us</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Links</h3>
+                    <ul class="footer-socials">
+                        <li><img src="./static/facebook.svg" alt="Facebook"></li>
+                        <li><img src="./static/twitter.svg" alt="Twitter"></li>
+                        <li><img src="./static/instagram.svg" alt="Instagram"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-brand-bg">Clarifone</div>
+            <div class="footer-bottom-row">
+                <div class="footer-lang">
+                    <button class="footer-lang-btn"><img src="./static/worldwide.svg" alt="Lang"> English <span>▼</span></button>
+                    <button class="footer-lang-btn"><img src="./static/profit.svg" alt="Country"> India (INR) <span>▼</span></button>
+                </div>
+                <div class="footer-cards">
+                    <img src="./static/visa.svg" alt="Visa">
+                    <img src="./static/mastercard.svg" alt="Mastercard">
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="cart-icon">
+        <span class="cart-count">0</span>
+        <img src="./static/Bag.svg" width="40" height="40" alt="Cart">
+    </div>
+    <script>
+    // Product data for 12 products (using 5 images in rotation)
+    const productImages = [
+      './static/products/p1.png',
+      './static/products/p2.png',
+      './static/products/p3.png',
+      './static/products/p4.png',
+      './static/products/p5.png'
+    ];
+    const brands = ['SonicPulse', 'Vibrance', 'SonicPulse', 'Vibrance', 'SonicPulse', 'Vibrance', 'SonicPulse', 'Vibrance', 'SonicPulse', 'Vibrance', 'SonicPulse', 'Vibrance'];
+    const productsList = document.getElementById('products-list');
+    const template = document.getElementById('product-card-template');
+
+    for (let i = 0; i < 12; i++) {
+      const clone = template.content.cloneNode(true);
+      const card = clone.querySelector('.product-card');
+      card.setAttribute('data-product', i+1);
+      // Set brand
+      card.querySelector('.brand').textContent = brands[i % brands.length];
+      // Set main image
+      const mainImg = card.querySelector('.main-img');
+      mainImg.src = productImages[i % productImages.length];
+      mainImg.alt = `Headphones ${i+1}`;
+      mainImg.id = `main-img-${i+1}`;
+      // Set color options
+      const colorOptions = card.querySelector('.color-options');
+      colorOptions.innerHTML = '';
+      for (let j = 0; j < 4; j++) {
+        const btn = document.createElement('button');
+        btn.className = 'color-btn' + (j === 0 ? ' selected' : '');
+        btn.setAttribute('data-img', productImages[(i+j)%productImages.length]);
+        btn.setAttribute('data-product', i+1);
+        btn.innerHTML = `<img src="${productImages[(i+j)%productImages.length]}" alt="Color ${j+1}">`;
+        colorOptions.appendChild(btn);
+      }
+      productsList.appendChild(clone);
+    }
+    // Color option image switching (for all cards)
+    function setupColorBtns() {
+      document.querySelectorAll('.color-btn').forEach(btn => {
+        btn.onclick = function() {
+          const productId = this.getAttribute('data-product');
+          const mainImg = document.getElementById('main-img-' + productId);
+          const newImg = this.getAttribute('data-img');
+          if (mainImg && newImg) mainImg.src = newImg;
+          this.parentElement.querySelectorAll('.color-btn').forEach(b => b.classList.remove('selected'));
+          this.classList.add('selected');
+        };
+      });
+    }
+    setupColorBtns();
+    </script>
 </body>
 </html>
