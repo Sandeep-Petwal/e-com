@@ -1,0 +1,150 @@
+/* Global Resets */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #222;
+    background: #f9f9f9;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.navbar {
+  border-bottom: 1px solid #B3B3B3;
+}
+
+
+
+
+
+.nav-link {
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+.nav-link i {
+    font-size: 1.2rem;
+}
+
+/* section css  */
+
+
+.product-img-box img {
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: transform 0.3s;
+}
+
+.product-img-box img:hover {
+    transform: scale(1.03);
+}
+
+.more-accessories-btn {
+    background-color: #F9F3E8;
+}
+
+
+
+.product-highlights-inner {
+    background-color: #F9F3E8;
+    padding: 10px;
+    border-radius:10px;
+
+}
+
+
+.product-highlights-wrapper {
+  background-color: #fdf9f2;
+  border: 1px solid #e1dacb;
+  position: relative;
+}
+
+.section-title {
+  font-weight: 600;
+  font-size: 1rem;
+  padding-bottom: 0.25rem;
+  margin-bottom: 1.5rem;
+  position: absolute;
+  top: -10px;
+  bottom:0;
+}
+
+.product-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.2rem;
+}
+
+.product-highlights-inner {
+  background-color: #fbf7ef;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: start;
+  border: 1px solid #f0eae0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.product-highlights-inner h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.product-highlights-inner p {
+  font-size: 0.875rem;
+  color: #777;
+}
+
+/* .color-option {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.color-option.active {
+  border-color: #000;
+}
+
+.pickup-box small {
+  color: #555;
+}
+
+.shipping-info p {
+  margin: 0.25rem 0;
+} */
+
+
+.main-banner-img {
+    border: 1px solid #E8DDC3;
+    background: #F9F3E8;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.product-img-box {
+    border: 1px solid #E8DDC3;
+    background: #F9F3E8;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+.product-info .brand {
+color: #CAAF70;
+
+}
+
+
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .product-title {
+        font-size: 2rem;
+    }
+}
